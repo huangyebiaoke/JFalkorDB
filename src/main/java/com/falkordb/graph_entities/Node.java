@@ -1,6 +1,7 @@
 package com.falkordb.graph_entities;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * * A class represent an node (graph entity). In addition to the base class id and properties, a node has labels.
@@ -43,7 +44,6 @@ public class Node extends GraphEntity {
     }
 
     /**
-     *
      * @param label
      * @return
      */
@@ -66,6 +66,14 @@ public class Node extends GraphEntity {
      */
     public int getNumberOfLabels() {
         return labels.size();
+    }
+
+    public Property get(String propertyName) {
+        return propertyMap.get(propertyName);
+    }
+
+    public Map<String, Object> asMap() {
+        return propertyMap.values().stream().collect(Collectors.toMap(Property::getName, Property::getValue));
     }
 
     @Override

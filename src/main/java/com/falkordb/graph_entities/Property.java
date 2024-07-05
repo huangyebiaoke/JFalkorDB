@@ -5,7 +5,7 @@ import java.util.Objects;
 /**
  * A Graph entity property. Has a name, type, and value
  */
-public class Property <T> {
+public class Property<T> {
 
     //members
     private String name;
@@ -14,12 +14,13 @@ public class Property <T> {
     /**
      * Default constructor
      */
-    public Property() {}
-    
+    public Property() {
+    }
+
     /**
      * Parameterized constructor
      *
-     * @param name property name
+     * @param name  property name
      * @param value property value
      */
     public Property(String name, T value) {
@@ -57,9 +58,25 @@ public class Property <T> {
         this.value = value;
     }
 
+    public String asString() {
+        return (String) getValue();
+    }
+
+    public boolean asBoolean() {
+        return (boolean) getValue();
+    }
+
+    public int asInt() {
+        return (int) getValue();
+    }
+
+    public double asDouble() {
+        return (double) getValue();
+    }
+
     private boolean valueEquals(Object value1, Object value2) {
-        if(value1 instanceof Integer) value1 = Long.valueOf(((Integer) value1).longValue());
-        if(value2 instanceof Integer) value2 = Long.valueOf(((Integer) value2).longValue());
+        if (value1 instanceof Integer) value1 = Long.valueOf(((Integer) value1).longValue());
+        if (value2 instanceof Integer) value2 = Long.valueOf(((Integer) value2).longValue());
         return Objects.equals(value1, value2);
     }
 
@@ -79,6 +96,7 @@ public class Property <T> {
 
     /**
      * Default toString implementation
+     *
      * @return string representation of the property
      */
     @Override
