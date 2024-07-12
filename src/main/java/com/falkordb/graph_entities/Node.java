@@ -69,7 +69,7 @@ public class Node extends GraphEntity {
     }
 
     public Property get(String propertyName) {
-        return propertyMap.get(propertyName);
+        return propertyMap.getOrDefault(propertyName, new Property<>());
     }
 
     public Map<String, Object> asMap() {
