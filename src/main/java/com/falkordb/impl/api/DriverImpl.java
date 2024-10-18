@@ -46,7 +46,7 @@ public class DriverImpl implements Driver {
     /**
      * Creates a client wrapping existing JedisPool
      * Should be used when you need to share the same pool between different clients
-     * 
+     * <p>
      * Notice: might be changed in the future
      *
      * @param pool jedis pool to wrap
@@ -71,5 +71,10 @@ public class DriverImpl implements Driver {
     @Override
     public void close() {
         pool.close();
+    }
+
+    @Override
+    public Pool<Jedis> getPool() {
+        return this.pool;
     }
 }

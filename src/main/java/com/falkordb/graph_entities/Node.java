@@ -51,7 +51,11 @@ public class Node extends GraphEntity {
         return labels.contains(label);
     }
 
-//    /**
+    public Set<String> getLabels() {
+        return labels;
+    }
+
+    //    /**
 //     * @param index - label index
 //     * @return the property label
 //     * @throws IndexOutOfBoundsException if the index is out of range
@@ -74,6 +78,10 @@ public class Node extends GraphEntity {
 
     public Map<String, Object> asMap() {
         return propertyMap.values().stream().collect(Collectors.toMap(Property::getName, Property::getValue));
+    }
+
+    public Map<String, String> asMap2() {
+        return propertyMap.values().stream().collect(Collectors.toMap(Property::getName, Property::asString));
     }
 
     @Override
