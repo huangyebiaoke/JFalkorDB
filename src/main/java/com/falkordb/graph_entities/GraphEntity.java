@@ -17,8 +17,9 @@ public abstract class GraphEntity {
     }
 
     /**
-     * Use this constructor to reduce memory allocations 
+     * Use this constructor to reduce memory allocations
      * when properties are added to the edge
+     *
      * @param propertiesCapacity preallocate the capacity for the properties
      */
     public GraphEntity(int propertiesCapacity) {
@@ -45,7 +46,7 @@ public abstract class GraphEntity {
     /**
      * Adds a property to the entity, by composing name, type and value to a property object
      *
-     * @param name property name
+     * @param name  property name
      * @param value property value
      */
     public void addProperty(String name, Object value) {
@@ -84,6 +85,10 @@ public abstract class GraphEntity {
         return propertyMap.get(propertyName);
     }
 
+    public boolean hasProperty(String propertyName) {
+        return propertyMap.containsKey(propertyName);
+    }
+
 
     /**
      * @param name - the name of the property to be removed
@@ -94,10 +99,10 @@ public abstract class GraphEntity {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o){
-             return true;
+        if (this == o) {
+            return true;
         }
-        if (!(o instanceof GraphEntity)){ 
+        if (!(o instanceof GraphEntity)) {
             return false;
         }
         GraphEntity that = (GraphEntity) o;
